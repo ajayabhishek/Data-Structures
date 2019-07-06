@@ -108,6 +108,26 @@ class LinkedList:
 
         cur1.next,cur2.next=cur2.next,cur1.next
 
+    def print_help(self,node,name):
+        if node is None:
+            print(name+ ": None")
+        else:
+            print(name+":"+node.data)
+            
+
+    def reverse_stack(self):
+        cur=self.head
+        prev=None
+        while cur is not None:
+            nxt=cur.next
+            cur.next=prev
+            self.print_help(prev,"PREV:")
+            self.print_help(cur,"CUR:")
+            self.print_help(nxt,"NXT:")
+            prev=cur
+            cur=nxt
+        self.head=prev
+
     def printlist(self):
         if self.head is None:
             print("Empty")
@@ -132,7 +152,9 @@ ll.insert_after(ll.head.next,"E")
 ll.prepend("Start")
 ll.append("End")
 
-ll.delete_at_pos(4)
-ll.swap("A","B") 
+#ll.delete_at_pos(4)
+ll.swap("E","C") 
 ll.printlist()
 print(ll.counter())
+ll.reverse_stack()
+ll.printlist()
